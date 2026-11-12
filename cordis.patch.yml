@@ -1,0 +1,4 @@
+- insert:
+    - id: nsfc-agent-skills
+      name: '@local/nsfc-agent-skills'
+      config: {}
