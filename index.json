@@ -1,11 +1,20 @@
 {
   "format": 1,
-  "title": { "en": "NSFC plugin collection", "zh": "NSFC 插件集合" },
-  "description": { "en": "NSFC application-writing agent skills, installable as one DeepSeek Harness plugin.", "zh": "NSFC 申请书写作 agent 技能，以单个 DeepSeek Harness 插件安装。" },
+  "title": {
+    "en": "NSFC plugin collection",
+    "zh": "NSFC 插件集合"
+  },
+  "description": {
+    "en": "NSFC application-writing agent skills, installable as one DeepSeek Harness plugin.",
+    "zh": "NSFC 申请书写作 agent 技能，以单个 DeepSeek Harness 插件安装。"
+  },
   "plugins": [
     {
       "name": "@local/nsfc-agent-skills",
-      "title": { "en": "NSFC Agent Skills", "zh": "NSFC 申请书技能" },
+      "title": {
+        "en": "NSFC Agent Skills",
+        "zh": "NSFC 申请书技能"
+      },
       "description": {
         "en": "Four NSFC application-writing skills through the skill tool: writing guidance, editable Draw.io figures, literature search and citations, and a 2026 policy quick reference. Drafts only; verify before submission.",
         "zh": "通过 skill 工具提供四个 NSFC 申请书技能：写作指南、可编辑 Draw.io 图示、文献检索与引用、2026 年度政策速查。生成内容为草稿，提交前须人工核实。"
@@ -13,16 +22,25 @@
       "icon": "icon.svg",
       "author": "ACautomata",
       "homepage": "https://github.com/ACautomata/nsfc",
-      "repository": { "url": "https://github.com/ACautomata/nsfc" },
-      "metadata": { "keywords": ["NSFC", "skills", "drawio", "literature"] },
+      "repository": {
+        "url": "https://github.com/ACautomata/nsfc"
+      },
+      "metadata": {
+        "keywords": [
+          "NSFC",
+          "skills",
+          "drawio",
+          "literature"
+        ]
+      },
       "versions": [
         {
-          "version": "0.1.0",
-          "publishTimestamp": 1794476898,
+          "version": "0.1.1",
+          "publishTimestamp": 1794477697,
           "source": {
             "type": "git",
             "url": "https://github.com/ACautomata/nsfc",
-            "commit": "95dab66d6b31de52fd63c0afded7b7508e8bac5b"
+            "commit": "432577a4bc3e75db4620ae0618f8f9bd674c771a"
           },
           "engines": {}
         }
