@@ -40,7 +40,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/ACautomata/nsfc",
-            "commit": "432577a4bc3e75db4620ae0618f8f9bd674c771a"
+            "commit": "97d5b6fc0dc913e2e2529d7899667251940448b6"
           },
           "engines": {}
         }
