@@ -1,10 +1,11 @@
 {
   "name": "@local/nsfc-agent-skills",
   "description": "NSFC application-writing agent skills (write, figure, literature, policy) as a DSH skill provider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
   "icon": "./icon.svg",
   "exports": {
     ".": "./index.js",
