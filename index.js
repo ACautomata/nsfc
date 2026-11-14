@@ -17,8 +17,8 @@ import { join } from 'node:path'
 
 /** Cordis plugin name. */
 export const name = 'nsfc-agent-skills'
-/** Service required by the skill provider. */
-export const inject = ['skills']
+/** Services required by the skill provider and the system-prompt section. */
+export const inject = ['skills', 'systemPrompt']
 
 const PROVIDER_NAME = 'nsfc-agent-skills'
 const SKILLS_ROOT = fileURLToPath(new URL('./skills/', import.meta.url))
@@ -26,6 +26,11 @@ const SKILLS_ROOT = fileURLToPath(new URL('./skills/', import.meta.url))
 const BUNDLED_SKILL_RANK = 600
 const SKILL_NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const INVOCATION = { modelInvocable: true, userInvocable: true }
+/** Bundled prompt text injected into the system prompt while the plugin is loaded. */
+const PROMPT_FILE = fileURLToPath(new URL('./prompts/anti-defensive-writing.md', import.meta.url))
+const PROMPT_SECTION_NAME = 'nsfc:anti-defensive-writing'
+/** After the deployment persona suffix (10200), so first-party prompt sections stay contiguous. */
+const PROMPT_SECTION_ORDER = 10300
 
 /**
  * Parse the restricted YAML frontmatter this provider accepts: an opening
@@ -111,11 +116,30 @@ function toCandidate(skillDirectory, parsed, warn, logWarn) {
 }
 
 /**
- * Register the shipped-skill provider on `ctx.skills`.
- * @param {import('@deepseek-ai/cordis').Context} ctx - Cordis context with the `skills` service.
+ * Register the shipped-skill provider on `ctx.skills` and inject the bundled
+ * anti-defensive-writing guide as a system-prompt section. The section lives
+ * as long as the plugin: Cordis disposes it on unload, so no session sees it
+ * after the plugin is removed.
+ * @param {import('@deepseek-ai/cordis').Context} ctx - Cordis context with the `skills` and `systemPrompt` services.
  */
-export function apply(ctx) {
+export async function apply(ctx) {
   const logWarn = (message) => { ctx.logger.warn(message) }
+
+  let promptText
+  try {
+    promptText = (await readFile(PROMPT_FILE, 'utf8')).trim()
+  } catch (error) {
+    logWarn(`system-prompt section skipped, "${PROMPT_FILE}" unreadable: ${String(error)}`)
+  }
+  if (promptText !== undefined && promptText.length > 0) {
+    ctx.systemPrompt.section({
+      name: PROMPT_SECTION_NAME,
+      order: PROMPT_SECTION_ORDER,
+      // Literal text: the guide is static and must not resolve `{{variables}}`.
+      interpolate: false,
+      text: promptText,
+    })
+  }
 
   const provider = {
     name: PROVIDER_NAME,

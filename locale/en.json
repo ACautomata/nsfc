@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "NSFC Agent Skills",
-    "description": "Provides four NSFC application-writing skills through the skill tool: writing guidance (nsfc-write), editable Draw.io figures (nsfc-figure), literature search and citations (nsfc-literature), and a 2026 policy quick reference (nsfc-policy). Sessions load a skill on demand with the skill tool; Python 3 is needed for the literature and figure helper scripts. Generated text, citations, figures, and policy content are drafts — verify everything before submission."
+    "description": "Provides four NSFC application-writing skills through the skill tool: writing guidance (nsfc-write), editable Draw.io figures (nsfc-figure), literature search and citations (nsfc-literature), and a 2026 policy quick reference (nsfc-policy). Sessions load a skill on demand with the skill tool; Python 3 is needed for the literature and figure helper scripts. While the plugin is loaded, it injects an anti-defensive-writing (launch-event principle) guide into the system prompt. Generated text, citations, figures, and policy content are drafts — verify everything before submission."
   }
 }
