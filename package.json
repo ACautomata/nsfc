@@ -16,6 +16,7 @@
     "index.js",
     "cordis.patch.yml",
     "locale/*.json",
+    "prompts",
     "icon.svg",
     "skills",
     "README.md"

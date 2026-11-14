@@ -1,6 +1,6 @@
 # NSFC Agent Skills（DSH 插件）
 
-把 [njzjz/nsfc-agent-skills](https://github.com/njzjz/nsfc-agent-skills) 的四个 NSFC 申请书辅助技能，转换成一个 DeepSeek Harness（DSH）插件。插件作为一个 skill provider 注册到宿主的 `ctx.skills` 注册表，会话里用 `skill` 工具按需加载。
+把 [njzjz/nsfc-agent-skills](https://github.com/njzjz/nsfc-agent-skills) 的四个 NSFC 申请书辅助技能，转换成一个 DeepSeek Harness（DSH）插件。插件作为一个 skill provider 注册到宿主的 `ctx.skills` 注册表，会话里用 `skill` 工具按需加载。插件加载期间，还向宿主的 `ctx.systemPrompt` 注册表注入一份「去除防御性写作（发布会原则）」守则；卸载或禁用插件即自动移除。
 
 ## 技能
 
@@ -34,6 +34,7 @@ nsfc-policy | 2026 年度限项、AI 使用、申请代码和项目类型等政�
 
 ## 使用
 
+- 插件加载后，新开的会话在其系统提示词里带一份「去除防御性写作（发布会原则）」写作守则（`prompts/anti-defensive-writing.md`）：识别防御性写作的 8 个特征，逐处按删、改写、挪处理，叙事围绕最强优势组织。底线是不改事实、数字不动。卸载插件后新开的会话不再带这段守则。
 - 会话中说需求即可，模型会按各技能的触发条件自动调用 `skill` 工具加载对应指南。
 - 也可以显式点名：例如“用 nsfc-literature 检索……”、“按 nsfc-figure 画一张技术路线图”。
 - `nsfc-literature` 与 `nsfc-figure` 的辅助脚本需要 Python 3；脚本在技能目录的 `scripts/` 下。
@@ -44,10 +45,11 @@ nsfc-policy | 2026 年度限项、AI 使用、申请代码和项目类型等政�
 ```
 package.json        DSH bundle 清单
 cordis.patch.yml    插入 Loader 行 nsfc-agent-skills
-index.js            Host 插件：注册 ctx.skills provider
+index.js            Host 插件：注册 ctx.skills provider 与 ctx.systemPrompt 注入段
 icon.svg            插件图标（市场索引引用同一文件）
 index.json          DSH 插件市场索引（format 1），版本固定到 commit
 locale/             插件标题与描述（en、zh）
+prompts/            系统提示词注入文本（anti-defensive-writing.md）
 skills/             四个技能目录，内容原样来自上游仓库
 ```
 

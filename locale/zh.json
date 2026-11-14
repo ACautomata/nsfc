@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "NSFC Agent Skills",
-    "description": "通过 skill 工具提供四个 NSFC 申请书技能：写作指南（nsfc-write）、可编辑 Draw.io 图示（nsfc-figure）、文献检索与引用（nsfc-literature）、2026 年度政策速查（nsfc-policy）。会话按需用 skill 工具加载；文献与图示的辅助脚本需要 Python 3。生成的文字、引用、图示与政策内容均为草稿，提交前须人工核实。"
+    "description": "通过 skill 工具提供四个 NSFC 申请书技能：写作指南（nsfc-write）、可编辑 Draw.io 图示（nsfc-figure）、文献检索与引用（nsfc-literature）、2026 年度政策速查（nsfc-policy）。会话按需用 skill 工具加载；文献与图示的辅助脚本需要 Python 3。插件加载期间向系统提示词注入「去除防御性写作（发布会原则）」写作守则。生成的文字、引用、图示与政策内容均为草稿，提交前须人工核实。"
   }
 }
