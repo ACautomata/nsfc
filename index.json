@@ -35,6 +35,16 @@
       },
       "versions": [
         {
+          "version": "0.1.2",
+          "publishTimestamp": 1794674482,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/ACautomata/nsfc",
+            "commit": "f1161c4838f75577d735b5f4640aa7593b0b6e71"
+          },
+          "engines": {}
+        },
+        {
           "version": "0.1.1",
           "publishTimestamp": 1794477697,
           "source": {
